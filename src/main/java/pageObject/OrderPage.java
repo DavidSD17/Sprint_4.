@@ -14,31 +14,35 @@ import static org.junit.Assert.assertEquals;
 public class OrderPage {
     private WebDriver driver;
   /* Для кого Скутер   */
-    private By nameField = By.xpath("//input[@placeholder='* Имя']");
-    private By surnameField = By.xpath("//input[@placeholder='* Фамилия']");
-    private By addressField = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
-    private By metroStationField = By.xpath("//input[@placeholder='* Станция метро']");
-    private By metroStationTuskaya = By.xpath("//input[@placeholder='* Станция метро'][@value='Тульская']");
-    private By telephoneNumberField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
-    private By  nextBtn = By.xpath("//button[contains(text(),'Далее')]");
+    private final By nameField = By.xpath("//input[@placeholder='* Имя']");
+    private final By surnameField = By.xpath("//input[@placeholder='* Фамилия']");
+    private final By addressField = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
+    private final By metroStationField = By.xpath("//input[@placeholder='* Станция метро']");
+    private final By metroStationTuskaya = By.xpath("//input[@placeholder='* Станция метро'][@value='Тульская']");
+    private final By telephoneNumberField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
+    private final By  nextBtn = By.xpath("//button[contains(text(),'Далее')]");
 
     /* Про аренду Скутера   */
-    private By dateField = By.xpath("//input[@placeholder='* Когда привезти самокат']");
-    private By dateToday = By.xpath("//div[contains(@class,'today')]");
+    private final By dateField = By.xpath("//input[@placeholder='* Когда привезти самокат']");
+    private final By dateToday = By.xpath("//div[contains(@class,'today')]");
 
-    private By periodField = By.xpath("//div[@class='Dropdown-placeholder'][contains(text(),'* Срок аренды')]");
-    private By periodTwoDay = By.xpath("//div[@role='option'][contains(text(),'двое суток')]");
-    private By colorScooter = By.id("black");
-    private By commentField = By.xpath("//input[@placeholder='Комментарий для курьера']");
-    private By orderBtnOnRentPage = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
-    private By yesOrderBtn = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][text()='Да']");
-    private By orderNumberPopUp = By.xpath("//*[@id='root']/div/div[2]/div[5]/div[1]/div/text()[2]");
-    private By orderCompletePopUp = By.xpath("//div[@class='Order_ModalHeader__3FDaJ'][text()='Заказ оформлен']");
-    private By viewOrderStatus = By.xpath("//button[contains(text(),'Посмотреть статус')]");
-    private By orderNumberInStatus = By.className("Input_Input__1iN_Z Track_Input__1g7lq Input_Filled__1rDxs Input_Responsible__1jDKN");
+    private final By periodField = By.xpath("//div[@class='Dropdown-placeholder'][contains(text(),'* Срок аренды')]");
+    private final By periodTwoDay = By.xpath("//div[@role='option'][contains(text(),'двое суток')]");
+    private final By colorScooter = By.id("black");
+    private final By commentField = By.xpath("//input[@placeholder='Комментарий для курьера']");
+    private final By orderBtnOnRentPage = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    private final By yesOrderBtn = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][text()='Да']");
+    private final By orderNumberPopUp = By.xpath("//*[@id='root']/div/div[2]/div[5]/div[1]/div/text()[2]");
+    private final By orderCompletePopUp = By.xpath("//div[@class='Order_ModalHeader__3FDaJ'][text()='Заказ оформлен']");
+    private final By viewOrderStatus = By.xpath("//button[contains(text(),'Посмотреть статус')]");
+    private final By orderNumberInStatus = By.className("Input_Input__1iN_Z Track_Input__1g7lq Input_Filled__1rDxs Input_Responsible__1jDKN");
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public OrderPage(){
+
     }
 
 
@@ -94,8 +98,12 @@ public class OrderPage {
     }
     public void clickOnNextBtn(){
         driver.findElement(nextBtn).click();
-
     }
+    public void clickOnNextBtnNotClickable(){
+        driver.findElement(nextBtn).click();
+        driver.findElement(nextBtn).isDisplayed();
+    }
+
     public void setDataRent(){
         driver.findElement(dateField).isEnabled();
         driver.findElement(dateField).click();

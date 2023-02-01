@@ -14,12 +14,14 @@ public class Tests_HomePage extends HomePage {
         super();
     }
 
+    @Before
+    public void setUpChrome(){
+        driver = new ChromeDriver();
+        driver.get("https://qa-scooter.praktikum-services.ru/");
+    }
 
     @Test
     public void checkQuestion1Chrome() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
         HomePage homePage = new HomePage(driver);
         homePage.clickQuestion(question1);
         homePage.checkAnswer(answer1Locator,answer1);
@@ -28,9 +30,6 @@ public class Tests_HomePage extends HomePage {
 
     @Test
     public void checkQuestion2Chrome() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
         HomePage homePage = new HomePage(driver);
         homePage.clickQuestion(question2);
         homePage.checkAnswer(answer2Locator,answer2);
@@ -38,21 +37,20 @@ public class Tests_HomePage extends HomePage {
     }
     @Test
     public void checkQuestion7Chrome() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
         HomePage homePage = new HomePage(driver);
         homePage.clickQuestion(question7);
         homePage.checkAnswer(answer7Locator,answer7);
 
     }
 
-    @Test
-    public void checkHeaderText() {
+    @Before
+    public void setUpFireFox(){
         driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
+    }
+    @Test
+    public void checkHeaderText() {
         HomePage homePage = new HomePage(driver);
-
         homePage.clickQuestion(question7);
         homePage.checkAnswer(answer7Locator,answer7);
 
@@ -61,7 +59,6 @@ public class Tests_HomePage extends HomePage {
 
     @After
     public void tearDown() {
-
         driver.quit();
     }
 
