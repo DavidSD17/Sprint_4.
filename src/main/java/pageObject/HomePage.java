@@ -48,19 +48,10 @@ public class HomePage {
         driver.findElement(confirmCookieBtn).click();
     }
 
-    public String getHeaderText() {
-        return driver.findElement(header).getText();
-    }
 
     public void clickOnOrderBtn(By orderBtn) {
         driver.findElement(orderBtn).isEnabled();
         driver.findElement(orderBtn).click();
-    }
-    public void clickOnOrderOrderDownBtn() {
-        WebElement element = driver.findElement(orderDownBtn);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-        element.isEnabled();
-        element.click();
     }
 
     public void waitForLoadHomePage(String text) {

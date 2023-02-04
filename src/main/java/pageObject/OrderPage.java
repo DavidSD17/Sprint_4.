@@ -32,10 +32,9 @@ public class OrderPage {
     private final By commentField = By.xpath("//input[@placeholder='Комментарий для курьера']");
     private final By orderBtnOnRentPage = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     private final By yesOrderBtn = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][text()='Да']");
-    private final By orderNumberPopUp = By.xpath("//*[@id='root']/div/div[2]/div[5]/div[1]/div/text()[2]");
+
     private final By orderCompletePopUp = By.xpath("//div[@class='Order_ModalHeader__3FDaJ'][text()='Заказ оформлен']");
-    private final By viewOrderStatus = By.xpath("//button[contains(text(),'Посмотреть статус')]");
-    private final By orderNumberInStatus = By.className("Input_Input__1iN_Z Track_Input__1g7lq Input_Filled__1rDxs Input_Responsible__1jDKN");
+
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
@@ -46,13 +45,6 @@ public class OrderPage {
     }
 
 
-    public void checkPopUpConfirmOrder(String expected){
-            String expected1 = "";
-            String actual = driver.findElement(By.xpath("//*[@id='root']/div/div[2]/div[5]/div[1]/text()")).getText();
-        MatcherAssert.assertThat(expected1, is(actual));
-        System.out.println(actual);
-
-    }
     public void checkOrderConfirmPopUpByText(String text) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.textToBePresentInElementLocated(orderCompletePopUp, text));
@@ -61,15 +53,6 @@ public class OrderPage {
 
     }
 
-
-    public void clickViewOrderStatus(){
-        driver.findElement(viewOrderStatus).isEnabled();
-        driver.findElement(viewOrderStatus).click();
-    }
-    public String getOrderNumber(){
-      driver.findElement(orderNumberInStatus).isEnabled();
-       return driver.findElement(orderNumberInStatus).getText();
-    }
 
     public void setName(String name){
         driver.findElement(nameField).isEnabled();
